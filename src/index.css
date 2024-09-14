@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.dark {
+  @apply bg-gray-800 text-zinc-50;
+}
+
+/* Add this custom style */
+.date-highlight {
+  @apply bg-yellow-300 text-black rounded-lg px-2 ml-2 font-bold text-2xl inline-block;
+}
+
+.react-calendar {
+  @apply bg-gray-700 text-white;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus,
+.react-calendar__tile--active {
+  @apply bg-cyan-600 bg-opacity-70 text-white;
+}
+
+.react-calendar__tile--now {
+  @apply bg-yellow-500 text-black;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  @apply bg-yellow-600;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  @apply text-red-300;
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  @apply p-2 rounded-md;
+}
+
+.react-calendar__tile:disabled {
+  @apply bg-gray-800 text-gray-500;
+}
+
+.react-calendar__navigation button:disabled {
+  @apply bg-gray-800;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  @apply bg-gray-600;
+}
