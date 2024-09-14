@@ -85,24 +85,34 @@ function App() {
       {event ? (
         <div className="pt-6">
           <h2 className="text-2xl mb-4">Main Story That Day:</h2>
-          <a href={event.link} target="_blank" rel="noopener noreferrer" className="relative">
-            <div className="max-w-5xl rounded-md drop-shadow-2xl border-solid bg-gray-600 grid gap-4 grid-cols-2 overflow-hidden">
-              <div className="relative">
+          <div className="max-w-5xl rounded-md drop-shadow-2xl border-solid bg-gray-600 grid gap-4 grid-cols-2 overflow-hidden">
+            <div className="relative">
+              <a href={event.link} target="_blank" rel="noopener noreferrer">
                 <img
                   src={event.imgSource}
                   onError={handleImageError}
                   alt="Featured event"
-                  className="max-w-full h-auto"
+                  className="max-w-full h-auto cursor-pointer"
                 />
-                <p className="absolute bottom-0 left-0 text-sm p-2 bg-gray-800 bg-opacity-75 text-white">
-                  <i className="text-xs md:text-sm">
-                    © https://rte.ie/news
-                  </i>
-                </p>
-              </div>
-              <p className="pr-4 py-4">{event.textContent}</p>
+              </a>
+              <p className="absolute bottom-0 left-0 text-sm p-2 bg-gray-800 bg-opacity-75 text-white">
+                <i className="text-xs md:text-sm">
+                  © https://rte.ie/news
+                </i>
+              </p>
             </div>
-          </a>
+            <div className="pr-4 py-4 flex flex-col justify-between">
+              <p>{event.textContent}</p>
+              <a 
+                href={event.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-300 hover:text-blue-100 underline mt-2"
+              >
+                Source
+              </a>
+            </div>
+          </div>
           {imageError && <p className="text-red-500 mt-2">{imageError}</p>}
         </div>
       ) : (
@@ -120,7 +130,7 @@ function App() {
             <strong>React:</strong> Used for building the user interface and managing the state of the application. React's component-based architecture allows for a modular and maintainable codebase.
           </li>
           <li style={{ marginBottom: '10px' }}>
-            <strong>Puppeteer:</strong> Utilised for web scraping. Puppeteer automates the browser to extract content from CNN and Fox News every 15 minutes. This data is then saved to Firebase Storage for further processing.
+            <strong>Puppeteer:</strong> Utilised for web scraping. Puppeteer automates the browser to extract content from RTE.ie/news every night at midnight. This data is then saved to Firebase Storage for further processing.
           </li>
           <li style={{ marginBottom: '10px' }}>
             <strong>Firebase:</strong> Provides a comprehensive suite of tools for building and managing the backend. Firebase Firestore is used to store and query the scraped data, while Firebase Cloud Functions are scheduled to run periodically to perform the scraping. Firebase Cloud Storage is used to store the raw data collected by Puppeteer.
